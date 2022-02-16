@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class Helicopter extends Aircraft {
 
-    private Company company;
     private int rotorLength = 1;
     private int rotorStep;
 
@@ -15,19 +14,10 @@ public class Helicopter extends Aircraft {
         super(id, name, manufacturer);
     }
 
-    public Helicopter(long id, String name, String manufacturer, Company company, int rotorLength, int rotorStep) {
+    public Helicopter(long id, String name, String manufacturer, int rotorLength, int rotorStep) {
         super(id, name, manufacturer);
-        this.company = company;
         this.rotorLength = rotorLength;
         this.rotorStep = rotorStep;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public int getRotorLength() {
@@ -49,24 +39,21 @@ public class Helicopter extends Aircraft {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Helicopter)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Helicopter that = (Helicopter) o;
-        return getRotorLength() == that.getRotorLength()
-                && getRotorStep() == that.getRotorStep()
-                && Objects.equals(getCompany(), that.getCompany());
+        return rotorLength == that.rotorLength && rotorStep == that.rotorStep;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCompany(), getRotorLength(), getRotorStep());
+        return Objects.hash(super.hashCode(), rotorLength, rotorStep);
     }
 
     @Override
     public String toString() {
         return "Helicopter{" +
-                "company=" + company +
-                ", rotorLength=" + rotorLength +
+                "rotorLength=" + rotorLength +
                 ", rotorStep=" + rotorStep +
                 '}';
     }

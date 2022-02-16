@@ -1,14 +1,16 @@
 package com.epam.airline.aircraft;
 
+import com.epam.airline.company.Company;
 import com.epam.airline.company.CompanyName;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 public class Aircraft {
     private long id;
     private String name;
     private String manufacturer;
-    private DateOfManufacture dateOfManufacture;
+    private Calendar dateOfManufacture;
     private int maxAltitude;
     private int maxFlightRange;
     private double cruisingSpeed;
@@ -20,6 +22,7 @@ public class Aircraft {
     private int loadCapacity;
     private int staffNumber;
     private int maxPassengerCapacity;
+    private Company company;
     private CompanyName companyName;
 
     public Aircraft(long id, String name, String manufacturer) {
@@ -52,11 +55,11 @@ public class Aircraft {
         this.manufacturer = manufacturer;
     }
 
-    public DateOfManufacture getDateOfManufacture() {
+    public Calendar getDateOfManufacture() {
         return dateOfManufacture;
     }
 
-    public void setDateOfManufacture(DateOfManufacture dateOfManufacture) {
+    public void setDateOfManufacture(Calendar dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
     }
 
@@ -148,6 +151,14 @@ public class Aircraft {
         this.maxPassengerCapacity = maxPassengerCapacity;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public CompanyName getCompanyName() {
         return companyName;
     }
@@ -159,7 +170,7 @@ public class Aircraft {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Aircraft)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Aircraft aircraft = (Aircraft) o;
         return id == aircraft.id
                 && maxAltitude == aircraft.maxAltitude
@@ -176,15 +187,15 @@ public class Aircraft {
                 && Objects.equals(name, aircraft.name)
                 && Objects.equals(manufacturer, aircraft.manufacturer)
                 && Objects.equals(dateOfManufacture, aircraft.dateOfManufacture)
+                && Objects.equals(company, aircraft.company)
                 && companyName == aircraft.companyName;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, manufacturer, dateOfManufacture, maxAltitude,
-                maxFlightRange, cruisingSpeed, maxSpeed, fuelConsumption,
-                fuelCapacity, minFlightWeight, maxFlightWeight,
-                loadCapacity, staffNumber, maxPassengerCapacity, companyName);
+        return Objects.hash(id, name, manufacturer, dateOfManufacture, maxAltitude, maxFlightRange,
+                cruisingSpeed, maxSpeed, fuelConsumption, fuelCapacity, minFlightWeight, maxFlightWeight,
+                loadCapacity, staffNumber, maxPassengerCapacity, company, companyName);
     }
 
     @Override
@@ -205,6 +216,7 @@ public class Aircraft {
                 ", loadCapacity=" + loadCapacity +
                 ", staffNumber=" + staffNumber +
                 ", maxPassengerCapacity=" + maxPassengerCapacity +
+                ", company=" + company +
                 ", companyName=" + companyName +
                 '}';
     }

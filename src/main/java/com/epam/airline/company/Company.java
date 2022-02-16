@@ -93,16 +93,16 @@ public class Company {
         this.balloonsMaxCapacity = balloonsMaxCapacity;
     }
 
-    public MyCollection<Airplane> getAirplanes() {
-        return airplanes;
+    public Airplane[] getAirplane() {
+        return airplanes.toArray(Airplane.class);
     }
 
-    public MyCollection<Helicopter> getHelicopters() {
-        return helicopters;
+    public Helicopter[] getHelicopter() {
+        return helicopters.toArray(Helicopter.class);
     }
 
-    public MyCollection<Balloon> getBalloons() {
-        return balloons;
+    public Balloon[] getBalloon() {
+        return balloons.toArray(Balloon.class);
     }
 
     public int getNumberOfAirplanes() {
@@ -141,6 +141,7 @@ public class Company {
     public boolean removeHelicopter(Helicopter helicopter) {
         return helicopters.remove(helicopter);
     }
+
     public boolean addBalloon(Balloon balloon) {
         if (getNumberOfBalloons() < balloonsMaxCapacity) {
             balloons.add(balloon);
@@ -153,29 +154,43 @@ public class Company {
         return balloons.remove(balloon);
     }
 
+    public double getCompanyFullCapacity(Company company) {
+        double capacity = 0;
+        for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
+            capacity += getAirplane()[i].getLoadCapacity();
+        }
+        for (int i = 0; i < company.getNumberOfHelicopters(); i++) {
+            capacity += getHelicopter()[i].getLoadCapacity();
+        }
+        for (int i = 0; i < company.getNumberOfBalloons(); i++) {
+            capacity += getBalloon()[i].getLoadCapacity();
+        }
+        return capacity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Company)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Company company = (Company) o;
-        return getCompanyId() == company.getCompanyId()
-                && getAirplanesMaxCapacity() == company.getAirplanesMaxCapacity()
-                && getHelicoptersMaxCapacity() == company.getHelicoptersMaxCapacity()
-                && getBalloonsMaxCapacity() == company.getBalloonsMaxCapacity()
-                && getCompanyName() == company.getCompanyName()
-                && Objects.equals(getAddress(), company.getAddress())
-                && Objects.equals(getRegistrationDate(), company.getRegistrationDate())
-                && Objects.equals(getCompanyAnnualBudget(), company.getCompanyAnnualBudget())
-                && Objects.equals(getAirplanes(), company.getAirplanes())
-                && Objects.equals(getHelicopters(), company.getHelicopters())
-                && Objects.equals(getBalloons(), company.getBalloons());
+        return companyId == company.companyId
+                && airplanesMaxCapacity == company.airplanesMaxCapacity
+                && helicoptersMaxCapacity == company.helicoptersMaxCapacity
+                && balloonsMaxCapacity == company.balloonsMaxCapacity
+                && companyName == company.companyName
+                && Objects.equals(address, company.address)
+                && Objects.equals(registrationDate, company.registrationDate)
+                && Objects.equals(companyAnnualBudget, company.companyAnnualBudget)
+                && Objects.equals(airplanes, company.airplanes)
+                && Objects.equals(helicopters, company.helicopters)
+                && Objects.equals(balloons, company.balloons);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCompanyId(), getCompanyName(), getAddress(), getRegistrationDate(),
-                getCompanyAnnualBudget(), getAirplanes(), getHelicopters(), getBalloons(),
-                getAirplanesMaxCapacity(), getHelicoptersMaxCapacity(), getBalloonsMaxCapacity());
+        return Objects.hash(companyId, companyName, address, registrationDate,
+                companyAnnualBudget, airplanes, helicopters,
+                balloons, airplanesMaxCapacity, helicoptersMaxCapacity, balloonsMaxCapacity);
     }
 
     @Override

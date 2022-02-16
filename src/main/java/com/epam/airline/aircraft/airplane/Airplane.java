@@ -1,14 +1,12 @@
 package com.epam.airline.aircraft.airplane;
 
 import com.epam.airline.aircraft.RunwayClass;
-import com.epam.airline.company.Company;
 import com.epam.airline.aircraft.Aircraft;
 
 import java.util.Objects;
 
 public class Airplane extends Aircraft {
 
-    private Company company;
     private int wingspan = 1;
     private int takeoffSpeed = 1;
     private RunwayClass runwayClass;
@@ -17,20 +15,11 @@ public class Airplane extends Aircraft {
         super(id, name, manufacturer);
     }
 
-    public Airplane(long id, String name, String manufacturer, Company company, int wingspan, int takeoffSpeed, RunwayClass runwayClass) {
+    public Airplane(long id, String name, String manufacturer, int wingspan, int takeoffSpeed, RunwayClass runwayClass) {
         super(id, name, manufacturer);
-        this.company = company;
         this.wingspan = wingspan;
         this.takeoffSpeed = takeoffSpeed;
         this.runwayClass = runwayClass;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public int getWingspan() {
@@ -60,25 +49,23 @@ public class Airplane extends Aircraft {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Airplane)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Airplane airplane = (Airplane) o;
-        return getWingspan() == airplane.getWingspan()
-                && getTakeoffSpeed() == airplane.getTakeoffSpeed()
-                && Objects.equals(getCompany(), airplane.getCompany())
-                && getRunwayClass() == airplane.getRunwayClass();
+        return wingspan == airplane.wingspan
+                && takeoffSpeed == airplane.takeoffSpeed
+                && runwayClass == airplane.runwayClass;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCompany(), getWingspan(), getTakeoffSpeed(), getRunwayClass());
+        return Objects.hash(super.hashCode(), wingspan, takeoffSpeed, runwayClass);
     }
 
     @Override
     public String toString() {
         return "Airplane{" +
-                "company=" + company +
-                ", wingspan=" + wingspan +
+                "wingspan=" + wingspan +
                 ", takeoffSpeed=" + takeoffSpeed +
                 ", runwayClass=" + runwayClass +
                 '}';

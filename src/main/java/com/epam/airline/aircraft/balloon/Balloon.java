@@ -1,13 +1,11 @@
 package com.epam.airline.aircraft.balloon;
 
 import com.epam.airline.aircraft.Aircraft;
-import com.epam.airline.company.Company;
 
 import java.util.Objects;
 
 public class Balloon extends Aircraft {
 
-    private Company company;
     private int balloonValue;
     private String gasType;
 
@@ -15,19 +13,10 @@ public class Balloon extends Aircraft {
         super(id, name, manufacturer);
     }
 
-    public Balloon(long id, String name, String manufacturer, Company company, int balloonValue, String gasType) {
+    public Balloon(long id, String name, String manufacturer, int balloonValue, String gasType) {
         super(id, name, manufacturer);
-        this.company = company;
         this.balloonValue = balloonValue;
         this.gasType = gasType;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public int getBalloonValue() {
@@ -49,22 +38,21 @@ public class Balloon extends Aircraft {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Balloon)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Balloon balloon = (Balloon) o;
-        return getBalloonValue() == balloon.getBalloonValue() && Objects.equals(getCompany(), balloon.getCompany()) && Objects.equals(getGasType(), balloon.getGasType());
+        return balloonValue == balloon.balloonValue && Objects.equals(gasType, balloon.gasType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCompany(), getBalloonValue(), getGasType());
+        return Objects.hash(super.hashCode(), balloonValue, gasType);
     }
 
     @Override
     public String toString() {
         return "Balloon{" +
-                "company=" + company +
-                ", balloonValue=" + balloonValue +
+                "balloonValue=" + balloonValue +
                 ", gasType='" + gasType + '\'' +
                 '}';
     }
