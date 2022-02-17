@@ -31,6 +31,22 @@ public class Aircraft {
         this.manufacturer = manufacturer;
     }
 
+    public Aircraft(long id,
+                    String name,
+                    String manufacturer,
+                    int maxFlightRange,
+                    double fuelConsumption,
+                    int loadCapacity,
+                    int maxPassengerCapacity) {
+        this.id = id;
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.maxFlightRange = maxFlightRange;
+        this.fuelConsumption = fuelConsumption;
+        this.loadCapacity = loadCapacity;
+        this.maxPassengerCapacity = maxPassengerCapacity;
+    }
+
     public long getId() {
         return id;
     }

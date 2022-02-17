@@ -154,8 +154,8 @@ public class Company {
         return balloons.remove(balloon);
     }
 
-    public double getCompanyFullCapacity(Company company) {
-        double capacity = 0;
+    public double findCompanyFullCapacity(Company company) {
+        int capacity = 0;
         for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
             capacity += getAirplane()[i].getLoadCapacity();
         }
@@ -167,6 +167,21 @@ public class Company {
         }
         return capacity;
     }
+
+    public double findCompanyFullPassengerCapacity(Company company) {
+        int numberOfPassengers = 0;
+        for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
+            numberOfPassengers += getAirplane()[i].getMaxPassengerCapacity();
+        }
+        for (int i = 0; i < company.getNumberOfHelicopters(); i++) {
+            numberOfPassengers += getHelicopter()[i].getMaxPassengerCapacity();
+        }
+        for (int i = 0; i < company.getNumberOfBalloons(); i++) {
+            numberOfPassengers += getBalloon()[i].getMaxPassengerCapacity();
+        }
+        return numberOfPassengers;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -201,9 +216,9 @@ public class Company {
                 ", address='" + address + '\'' +
                 ", registrationDate='" + registrationDate + '\'' +
                 ", companyAnnualBudget=" + companyAnnualBudget +
-                ", airplanes=" + airplanes +
-                ", helicopters=" + helicopters +
-                ", balloons=" + balloons +
+//                ", airplanes=" + airplanes +
+//                ", helicopters=" + helicopters +
+//                ", balloons=" + balloons +
                 ", airplanesMaxCapacity=" + airplanesMaxCapacity +
                 ", helicoptersMaxCapacity=" + helicoptersMaxCapacity +
                 ", balloonsMaxCapacity=" + balloonsMaxCapacity +

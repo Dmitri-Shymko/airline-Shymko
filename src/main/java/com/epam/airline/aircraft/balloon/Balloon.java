@@ -13,6 +13,16 @@ public class Balloon extends Aircraft {
         super(id, name, manufacturer);
     }
 
+    public Balloon(long id,
+                   String name,
+                   String manufacturer,
+                   int maxFlightRange,
+                   double fuelConsumption,
+                   int loadCapacity,
+                   int maxPassengerCapacity) {
+        super(id, name, manufacturer, maxFlightRange, fuelConsumption, loadCapacity, maxPassengerCapacity);
+    }
+
     public Balloon(long id, String name, String manufacturer, int balloonValue, String gasType) {
         super(id, name, manufacturer);
         this.balloonValue = balloonValue;
