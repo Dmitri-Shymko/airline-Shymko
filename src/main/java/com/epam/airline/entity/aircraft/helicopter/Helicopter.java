@@ -1,7 +1,6 @@
-package com.epam.airline.aircraft.helicopter;
+package com.epam.airline.entity.aircraft.helicopter;
 
-import com.epam.airline.aircraft.Aircraft;
-import com.epam.airline.company.Company;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 

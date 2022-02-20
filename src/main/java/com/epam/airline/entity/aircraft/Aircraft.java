@@ -1,9 +1,11 @@
-package com.epam.airline.aircraft;
+package com.epam.airline.entity.aircraft;
 
-import com.epam.airline.company.Company;
-import com.epam.airline.company.CompanyName;
+import com.epam.airline.entity.company.Company;
+import com.epam.airline.entity.company.CompanyName;
+import com.epam.airline.logic.MyComparator;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class Aircraft {
@@ -47,6 +49,7 @@ public class Aircraft {
         this.maxPassengerCapacity = maxPassengerCapacity;
     }
 
+
     public long getId() {
         return id;
     }
@@ -75,8 +78,12 @@ public class Aircraft {
         return dateOfManufacture;
     }
 
-    public void setDateOfManufacture(Calendar dateOfManufacture) {
-        this.dateOfManufacture = dateOfManufacture;
+//    public void setDateOfManufacture(Calendar dateOfManufacture) {
+//        this.dateOfManufacture = dateOfManufacture;
+//    }
+
+    public void setDateOfManufacture(int year, int month, int day) {
+        this.dateOfManufacture = new GregorianCalendar(year, month, day);
     }
 
     public int getMaxAltitude() {

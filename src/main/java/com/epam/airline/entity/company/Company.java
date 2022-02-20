@@ -1,13 +1,14 @@
-package com.epam.airline.company;
+package com.epam.airline.entity.company;
 
-import com.epam.airline.aircraft.Aircraft;
-import com.epam.airline.aircraft.airplane.Airplane;
-import com.epam.airline.aircraft.balloon.Balloon;
-import com.epam.airline.aircraft.helicopter.Helicopter;
+import com.epam.airline.entity.aircraft.airplane.Airplane;
+import com.epam.airline.entity.aircraft.balloon.Balloon;
+import com.epam.airline.entity.aircraft.helicopter.Helicopter;
 import com.epam.airline.datastructures.MyCollection;
 import com.epam.airline.datastructures.MyDynamicArray;
+import com.epam.airline.logic.MyComparator;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 public class Company {
@@ -153,35 +154,6 @@ public class Company {
     public boolean removeBalloon(Balloon balloon) {
         return balloons.remove(balloon);
     }
-
-    public double findCompanyFullCapacity(Company company) {
-        int capacity = 0;
-        for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
-            capacity += getAirplane()[i].getLoadCapacity();
-        }
-        for (int i = 0; i < company.getNumberOfHelicopters(); i++) {
-            capacity += getHelicopter()[i].getLoadCapacity();
-        }
-        for (int i = 0; i < company.getNumberOfBalloons(); i++) {
-            capacity += getBalloon()[i].getLoadCapacity();
-        }
-        return capacity;
-    }
-
-    public double findCompanyFullPassengerCapacity(Company company) {
-        int numberOfPassengers = 0;
-        for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
-            numberOfPassengers += getAirplane()[i].getMaxPassengerCapacity();
-        }
-        for (int i = 0; i < company.getNumberOfHelicopters(); i++) {
-            numberOfPassengers += getHelicopter()[i].getMaxPassengerCapacity();
-        }
-        for (int i = 0; i < company.getNumberOfBalloons(); i++) {
-            numberOfPassengers += getBalloon()[i].getMaxPassengerCapacity();
-        }
-        return numberOfPassengers;
-    }
-
 
     @Override
     public boolean equals(Object o) {

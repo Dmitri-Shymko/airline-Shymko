@@ -1,6 +1,6 @@
-package com.epam.airline.aircraft.balloon;
+package com.epam.airline.entity.aircraft.balloon;
 
-import com.epam.airline.aircraft.Aircraft;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 

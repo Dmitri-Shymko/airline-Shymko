@@ -1,7 +1,7 @@
-package com.epam.airline.aircraft.airplane;
+package com.epam.airline.entity.aircraft.airplane;
 
-import com.epam.airline.aircraft.RunwayClass;
-import com.epam.airline.aircraft.Aircraft;
+import com.epam.airline.entity.aircraft.RunwayClass;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 
