@@ -6,7 +6,12 @@ import com.epam.airline.entity.aircraft.helicopter.Helicopter;
 import com.epam.airline.entity.company.Company;
 
 public class Finder {
-    public int findCompanyFullCapacity(Company company) {
+    /**
+     * Finding full load capacity of the all company aircrafts.
+     * @param company
+     * @return capacity (int)
+     */
+    public int findCompanyLoadCapacity(Company company) {
         int capacity = 0;
         for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
             capacity += company.getAirplane()[i].getLoadCapacity();
@@ -20,7 +25,12 @@ public class Finder {
         return capacity;
     }
 
-    public int findCompanyFullPassengerCapacity(Company company) {
+    /**
+     * Finding maximum passenger capacity  of the all company aircrafts.
+     * @param company
+     * @return number of passenger (int)
+     */
+    public int findCompanyPassengerCapacity(Company company) {
         int numberOfPassengers = 0;
         for (int i = 0; i < company.getNumberOfAirplanes(); i++) {
             numberOfPassengers += company.getAirplane()[i].getMaxPassengerCapacity();
@@ -33,7 +43,13 @@ public class Finder {
         }
         return numberOfPassengers;
     }
-    
+
+    /**
+     * Search for an aircraft that matches the user's fuel consumption.
+     * @param company
+     * @param minValue minimum value of fuel consumption
+     * @param maxValue maximum value of fuel consumption
+     */
     public void findAircraftByFuelConsumption(Company company, double minValue, double maxValue) {
         for (Airplane airplane : company.getAirplane()) {
             if (airplane.getFuelConsumption() > minValue && airplane.getFuelConsumption() < maxValue) {

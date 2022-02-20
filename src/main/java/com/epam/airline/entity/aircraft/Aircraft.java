@@ -78,10 +78,6 @@ public class Aircraft {
         return dateOfManufacture;
     }
 
-//    public void setDateOfManufacture(Calendar dateOfManufacture) {
-//        this.dateOfManufacture = dateOfManufacture;
-//    }
-
     public void setDateOfManufacture(int year, int month, int day) {
         this.dateOfManufacture = new GregorianCalendar(year, month, day);
     }
