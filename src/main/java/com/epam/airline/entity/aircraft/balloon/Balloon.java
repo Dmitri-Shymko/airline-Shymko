@@ -1,6 +1,6 @@
-package com.epam.airline.aircraft.balloon;
+package com.epam.airline.entity.aircraft.balloon;
 
-import com.epam.airline.aircraft.Aircraft;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 
@@ -11,6 +11,16 @@ public class Balloon extends Aircraft {
 
     public Balloon(long id, String name, String manufacturer) {
         super(id, name, manufacturer);
+    }
+
+    public Balloon(long id,
+                   String name,
+                   String manufacturer,
+                   int maxFlightRange,
+                   double fuelConsumption,
+                   int loadCapacity,
+                   int maxPassengerCapacity) {
+        super(id, name, manufacturer, maxFlightRange, fuelConsumption, loadCapacity, maxPassengerCapacity);
     }
 
     public Balloon(long id, String name, String manufacturer, int balloonValue, String gasType) {

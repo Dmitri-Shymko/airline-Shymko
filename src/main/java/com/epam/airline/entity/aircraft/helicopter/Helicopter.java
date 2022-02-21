@@ -1,7 +1,6 @@
-package com.epam.airline.aircraft.helicopter;
+package com.epam.airline.entity.aircraft.helicopter;
 
-import com.epam.airline.aircraft.Aircraft;
-import com.epam.airline.company.Company;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 
@@ -12,6 +11,16 @@ public class Helicopter extends Aircraft {
 
     public Helicopter(long id, String name, String manufacturer) {
         super(id, name, manufacturer);
+    }
+
+    public Helicopter(long id,
+                      String name,
+                      String manufacturer,
+                      int maxFlightRange,
+                      double fuelConsumption,
+                      int loadCapacity,
+                      int maxPassengerCapacity) {
+        super(id, name, manufacturer, maxFlightRange, fuelConsumption, loadCapacity, maxPassengerCapacity);
     }
 
     public Helicopter(long id, String name, String manufacturer, int rotorLength, int rotorStep) {

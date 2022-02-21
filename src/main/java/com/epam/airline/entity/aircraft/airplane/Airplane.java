@@ -1,7 +1,7 @@
-package com.epam.airline.aircraft.airplane;
+package com.epam.airline.entity.aircraft.airplane;
 
-import com.epam.airline.aircraft.RunwayClass;
-import com.epam.airline.aircraft.Aircraft;
+import com.epam.airline.entity.aircraft.RunwayClass;
+import com.epam.airline.entity.aircraft.Aircraft;
 
 import java.util.Objects;
 
@@ -15,11 +15,14 @@ public class Airplane extends Aircraft {
         super(id, name, manufacturer);
     }
 
-    public Airplane(long id, String name, String manufacturer, int wingspan, int takeoffSpeed, RunwayClass runwayClass) {
-        super(id, name, manufacturer);
-        this.wingspan = wingspan;
-        this.takeoffSpeed = takeoffSpeed;
-        this.runwayClass = runwayClass;
+    public Airplane(long id,
+                    String name,
+                    String manufacturer,
+                    int maxFlightRange,
+                    double fuelConsumption,
+                    int loadCapacity,
+                    int maxPassengerCapacity) {
+        super(id, name, manufacturer, maxFlightRange, fuelConsumption, loadCapacity, maxPassengerCapacity);
     }
 
     public int getWingspan() {
